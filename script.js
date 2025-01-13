@@ -33,8 +33,12 @@ function getBooks(library) {
         let book = library[index];
         console.log(book.title);
         let bookCard = document.createElement('div');
+        bookCard.classList.add('book-card');
         bookList.appendChild(bookCard);
-        bookCard.innerHTML = `<h2> ${book.title} </h2><h4> ${book.author} </h4><p> ${book.pageCount} </p><p> ${book.read} </p>`;
+        bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
+        <h4 class="book-author"> ${book.author} </h4>
+        <p class="page-count"> ${book.pageCount} </p>
+        <p class="read"> ${book.read} </p>`;
 
 
     }
