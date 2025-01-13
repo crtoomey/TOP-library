@@ -72,6 +72,11 @@ h6 {
 
 
 /* Custom CSS by Colin Toomey */
+
+body {
+    background-color: #E6E6E6;
+}
+
 /* Form styling */
 .add-book-form {
     width: 50%;
@@ -81,6 +86,7 @@ h6 {
     left: 0;
     bottom: 0;
     right: 0;
+    background-color: #E6E6E6;
 }
 
 legend {
@@ -109,7 +115,7 @@ input#close {
 }
 
 /* add book button styling */
-.add-book-btn {
+.new-book-btn {
     color: white;
     background-color: #0041C2;
     border: none;
