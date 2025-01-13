@@ -1,3 +1,6 @@
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("dialog + button");
+const closeButton = document.querySelector("#close");
 let bookList = document.querySelector('.book-list')
 const myLibrary = [];
 
@@ -45,3 +48,15 @@ function getBooks(library) {
 }
 
 getBooks(myLibrary);
+
+
+// show add book dialog modal
+// "Show the dialog" button opens the dialog modally
+showButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+// "Close" button closes the dialog
+closeButton.addEventListener("click", () => {
+    dialog.close();
+});

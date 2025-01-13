@@ -72,3 +72,47 @@ h6 {
 
 
 /* Custom CSS by Colin Toomey */
+/* Form styling */
+.add-book-form {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+legend {
+    font-size: 2rem;
+}
+
+input {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+input#submit {
+    color: white;
+    background-color: #0B6623;
+    border: none;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+input#close {
+    color: white;
+    background-color: #D21404;
+    border: none;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+/* add book button styling */
+.add-book-btn {
+    color: white;
+    background-color: #0041C2;
+    border: none;
+    border-radius: 10px;
+    padding: 4px;
+}
