@@ -2,7 +2,9 @@ const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("#close");
 const submitButton = document.querySelector('#submit')
-let bookList = document.querySelector('.book-list')
+const successMessage = document.querySelector('.success');
+const failureMessage = document.querySelector('.failure');
+let bookList = document.querySelector('.book-list');
 const myLibrary = [];
 
 // book constructor function with read attribute being true or false
@@ -51,7 +53,6 @@ function addBookToLibrary(book) {
 // addBookToLibrary(notesFromUnderground);
 // console.log(myLibrary);
 
-
 // function to loop through myLibrary array and print each book's contents on to the page
 function getBooks(library) {
     bookList.innerHTML = "";
@@ -64,7 +65,9 @@ function getBooks(library) {
         bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
         <h4 class="book-author"> ${book.author} </h4>
         <p class="page-count"> ${book.pageCount} </p>
-        <p class="read"> ${book.read} </p>`;
+        <p class="read"> ${book.read} </p>
+        <button>Mark as Read</button>
+        <button>Remove from Library</button>`;
     }
 }
 
@@ -88,10 +91,17 @@ function submitForm(event) {
     let bookAuthor = document.querySelector('#author').value;
     let bookPageCount = document.querySelector('#page-count').value;
     const newBook = new Book(bookTitle, bookAuthor, bookPageCount, false);
-    console.log(newBook.title);
-    addBookToLibrary(newBook);
-    // console.log(myLibrary)
-    getBooks(myLibrary);
-    dialog.close();
+    const exists = myLibrary.some(
+        (bk) =>
+            bk.title === newBook.title && bk.author === newBook.author
+    );
+
+    if (exists) {
+        console.error("Book already exists in library!")
+    } else {
+        addBookToLibrary(newBook);
+        getBooks(myLibrary);
+        dialog.close();
+    }
 }
 

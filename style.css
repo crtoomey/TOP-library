@@ -122,3 +122,15 @@ input#close {
     border-radius: 10px;
     padding: 4px;
 }
+
+
+/* messages being hidden to begin with and then shown if the user is successful at adding a book or not */
+
+.success,
+.failure {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
