@@ -145,6 +145,14 @@ input#close {
     padding: 4px;
 }
 
+.has-been-read-btn {
+    color: black;
+    background-color: #E6E6E6;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 4px;
+}
+
 .remove-btn {
     color: white;
     background-color: #D21404;

@@ -65,12 +65,21 @@ function getBooks(library) {
         let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
         bookList.appendChild(bookCard);
-        bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
-        <h4 class="book-author"> By ${book.author} </h4>
-        <p class="page-count"> ${book.pageCount} pages </p>
-        <p class="read"> ${book.info()} </p>
-        <button class="mark-read-btn">Mark as Read</button>
-        <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>`;
+        if (book.read === false) {
+            bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
+            <h4 class="book-author"> By ${book.author} </h4>
+            <p class="page-count"> ${book.pageCount} pages </p>
+            <p class="info"> ${book.info()} </p>
+            <button class="mark-read-btn" id="book-${book.id}" onclick="markAsRead(${book.id})">Mark as Read</button>
+            <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>`;
+        } else {
+            bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
+            <h4 class="book-author"> By ${book.author} </h4>
+            <p class="page-count"> ${book.pageCount} pages </p>
+            <p class="info"> ${book.info()} </p>
+            <button class="has-been-read-btn" id="book-${book.id}">Completed!</button>
+            <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>`;
+        }
     }
 }
 
@@ -118,4 +127,17 @@ function removeBook(id) {
     } else {
         getBooks(myLibrary);
     }
+}
+
+// function to mark a book as read
+function markAsRead(id) {
+    let book = myLibrary[id];
+    book.read = true;
+    let readButton = document.querySelector("#book-" + id);
+    readButton.innerText = "Completed!";
+    readButton.classList.remove('mark-read-btn');
+    readButton.classList.add('has-been-read-btn');
+    readButton.disabled = true;
+    getBooks(myLibrary);
+
 }
