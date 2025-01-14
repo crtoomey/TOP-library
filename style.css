@@ -134,3 +134,21 @@ input#close {
 .hidden {
     display: none;
 }
+
+/* card button styles */
+
+.mark-read-btn {
+    color: white;
+    background-color: #0B6623;
+    border: none;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.remove-btn {
+    color: white;
+    background-color: #D21404;
+    border: none;
+    border-radius: 10px;
+    padding: 4px;
+}

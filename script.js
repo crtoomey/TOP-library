@@ -8,11 +8,12 @@ let bookList = document.querySelector('.book-list');
 const myLibrary = [];
 
 // book constructor function with read attribute being true or false
-function Book(title, author, pageCount, read) {
+function Book(title, author, pageCount, read, id) {
     this.title = title;
     this.author = author;
     this.pageCount = pageCount;
     this.read = read;
+    this.id = id;
     this.info = function () {
         if (this.read === false) {
             return `${this.title} by ${this.author}, ${this.pageCount} pages, not read yet.`
@@ -41,6 +42,7 @@ function addBookToLibrary(book) {
         console.log('Book already exists in the library');
     } else {
         console.log('adding book');
+
         myLibrary.push(book);
     }
 
@@ -58,16 +60,17 @@ function getBooks(library) {
     bookList.innerHTML = "";
     for (let index = 0; index < library.length; index++) {
         let book = library[index];
-
+        book.id = index;
+        console.log(book.id);
         let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
         bookList.appendChild(bookCard);
         bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
-        <h4 class="book-author"> ${book.author} </h4>
-        <p class="page-count"> ${book.pageCount} </p>
-        <p class="read"> ${book.read} </p>
-        <button>Mark as Read</button>
-        <button>Remove from Library</button>`;
+        <h4 class="book-author"> By ${book.author} </h4>
+        <p class="page-count"> ${book.pageCount} pages </p>
+        <p class="read"> ${book.info()} </p>
+        <button class="mark-read-btn">Mark as Read</button>
+        <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>`;
     }
 }
 
@@ -105,3 +108,14 @@ function submitForm(event) {
     }
 }
 
+// function to remove books from library
+function removeBook(id) {
+    myLibrary.splice(id, 1);
+
+    if (myLibrary.length === 0) {
+        getBooks(myLibrary);
+        bookList.innerHTML = "<h3>No Books Yet!</h3>";
+    } else {
+        getBooks(myLibrary);
+    }
+}
