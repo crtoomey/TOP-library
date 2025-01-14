@@ -66,19 +66,33 @@ function getBooks(library) {
         bookCard.classList.add('book-card');
         bookList.appendChild(bookCard);
         if (book.read === false) {
-            bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
+            bookCard.innerHTML = `
+            <div class="title-and-author">
+            <h2 class="book-title"> ${book.title} </h2>
             <h4 class="book-author"> By ${book.author} </h4>
+            </div>
+            <div class="page-and-info">
             <p class="page-count"> ${book.pageCount} pages </p>
             <p class="info"> ${book.info()} </p>
+            </div>
+            <div class="read-and-remove-buttons">
             <button class="mark-read-btn" id="book-${book.id}" onclick="markAsRead(${book.id})">Mark as Read</button>
-            <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>`;
+            <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>
+            </div>`;
         } else {
-            bookCard.innerHTML = `<h2 class="book-title"> ${book.title} </h2>
+            bookCard.innerHTML = `
+            <div class="title-and-author">
+            <h2 class="book-title"> ${book.title} </h2>
             <h4 class="book-author"> By ${book.author} </h4>
+            </div>
+            <div class="page-and-info">
             <p class="page-count"> ${book.pageCount} pages </p>
             <p class="info"> ${book.info()} </p>
+            </div>
+            <div class="read-and-remove-buttons">
             <button class="has-been-read-btn" id="book-${book.id}">Completed!</button>
-            <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>`;
+            <button class="remove-btn" onclick="removeBook(${book.id})">Remove from Library</button>
+            </div>`;
         }
     }
 }
