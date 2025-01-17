@@ -7,21 +7,55 @@ const failureMessage = document.querySelector('.failure');
 let bookList = document.querySelector('.book-list');
 const myLibrary = [];
 
-// book constructor function with read attribute being true or false
-function Book(title, author, pageCount, read, id) {
-    this.title = title;
-    this.author = author;
-    this.pageCount = pageCount;
-    this.read = read;
-    this.id = id;
-    this.info = function () {
+// using class instead of plain constructor
+class Book {
+    constructor(title, author, pageCount, read, id) {
+        this.title = title;
+        this.author = author;
+        this.pageCount = pageCount;
+        this.read = read;
+        this.id = id;
+    }
+    info() {
         if (this.read === false) {
             return `${this.title} by ${this.author}, ${this.pageCount} pages, not read yet.`
         } else {
             return `${this.title} by ${this.author}, ${this.pageCount} pages, has been read.`
         }
     }
+    addBook(book) {
+        // check to see if the new book already exists in the array
+        const exists = myLibrary.some(
+            (bk) =>
+                bk.title === book.title && bk.author === book.author
+        );
+
+        if (exists) {
+            console.log('Book already exists in the library');
+        } else {
+            console.log('adding book');
+
+            myLibrary.push(book);
+        }
+    }
 }
+
+
+// book constructor function with read attribute being true or false
+// function Book(title, author, pageCount, read, id) {
+//     this.title = title;
+//     this.author = author;
+//     this.pageCount = pageCount;
+//     this.read = read;
+//     this.id = id;
+//     this.info = function () {
+//         if (this.read === false) {
+//             return `${this.title} by ${this.author}, ${this.pageCount} pages, not read yet.`
+//         } else {
+//             return `${this.title} by ${this.author}, ${this.pageCount} pages, has been read.`
+//         }
+//     }
+// }
 
 // manual entries to test things
 // const crimeAndPunishment = new Book('Crime and Punishment', 'Fyodor Dostoevsky', 270, true);
@@ -45,8 +79,6 @@ function addBookToLibrary(book) {
 
         myLibrary.push(book);
     }
-
-
 }
 
 // test for seeing if the book is appended to the array
